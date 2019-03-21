@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::header">
+</head>
+<body>
+<div id="login-container">
+    <h3 class="title">Enter your username</h3>
+    <form id="loginForm" name="loginForm" th:action="@{/login}" method="POST">
+        <div class="form-group">
+            <input id="username" type="text" class="form-control" name="username" />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::header"></head>
+<!-- https://cdnjs.com/libraries/sockjs-client -->
+
+<body>
+<div class="chat-header">
+    <div class="user-container">
+        <span id="username" th:utext="${username}"></span>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+
+<div id="chat-container">
+    <script th:inline="javascript">
+        var userId = [[${sessionId}]]
+    </script>
+
+    <div id="connecting">Connecting...</div>
+    <ul id="messageArea">
+    </ul>
+    <form id="messageForm" name="messageForm">
+        <div id="onlines"></div>
+        <div class="input-message">
+
+            <div class="row">
+                <div class="col-9">
+                    <textarea class="form-control" rows="3" id="message" placeholder="Type a message..."></textarea>
+                </div>
+                <div class="col-3">
+                    <div class="upload-btn-wrapper">
+                        <button class="btn">Upload a file</button>
+                        <input type="file" id="chooseFile" onchange="uploadBinaryWS(this.files)"/>
+                    </div>
+                    <button class="btn btn-success" style="width: 115px;" type="submit">Send</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+
+
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<!-- https://cdnjs.com/libraries/stomp.js/ -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="./webjars/org.webjars.npm/es6-promise/4.2.4/dist/es6-promise.min.js"></script>
+<script src="./webjars/org.webjars.npm/es6-promise/4.2.4/dist/es6-promise.auto.min.js"></script>
+<script src="./webjars/whatwg-fetch/2.0.3/fetch.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script th:src="@{../js/main.js}"></script>
+</body>
+</html>
