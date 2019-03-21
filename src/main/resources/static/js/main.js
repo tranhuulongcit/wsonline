@@ -13,7 +13,7 @@ var username = null;
 function connect() {
     username = document.querySelector('#username').innerText.trim();
 
-    var socket = new SockJS('http://localhost:8080/jponline');
+    var socket = new SockJS('http://45.76.204.141:9999/jponline');
     stompClient = Stomp.over(socket);
 
     stompClient.connect({"user" : userId}, onConnected, onError);
